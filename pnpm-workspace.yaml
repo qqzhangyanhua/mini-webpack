@@ -1,0 +1,3 @@
+packages: 
+    - "libs/**"
+    - "px2-loader/**"

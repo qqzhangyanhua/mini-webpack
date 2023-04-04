@@ -1,10 +1,12 @@
 
+const { SyncBailHook } = require('tapable');
 const {Tapable, SyncHook,AsyncSeriesHook} = require('tapable');
-class Compiler  {
+class Compiler   {
     constructor(context){
         // super()
         this.context = context;
         this.hooks = {
+            entry:new SyncBailHook(['context','entry']),
             done: new AsyncSeriesHook(['stats']), //当编译完会触发这个钩子
         }
     }

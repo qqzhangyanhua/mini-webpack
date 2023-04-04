@@ -16,6 +16,7 @@ const webpack = (options, callback) => {
       }
     }
   }
+  new WebpackOptionsApply().process();
   return compiler;
 };
 module.exports = webpack;

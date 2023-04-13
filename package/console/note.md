@@ -33,6 +33,10 @@
 console.log("%cHooray", style);
     ```
 - $('img')  $$('img')会显示所有的 img 标签
+#### source相关
+ - source--左上角 切换到snippets 在右侧写代码, 然后输入代码, ---点击右下角运行代码
+ - Select Add conditional breakpoint... 选择条件断点
+ - Select Add logpoint... 选择日志断点
 
 ```shell
 open -a "Google Chrome" --args --auto-open-devtools-for-tabs

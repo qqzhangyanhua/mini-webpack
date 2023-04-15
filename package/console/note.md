@@ -33,10 +33,31 @@
 console.log("%cHooray", style);
     ```
 - $('img')  $$('img')会显示所有的 img 标签
+
+- 网络, initiator (请求资源的原因)
+- 右键 标题 size name status 
+- 选择slow 3G
+- command +F 搜索Cache-Control
+- domain:www.baidu.com 会显示所有的百度的请求
+- command +shift +p  搜索 bloc 点击添加阻止模式
+- 右侧设置 capture screenshots  会截图 保存在 Application > Screenshots
+- 右侧设置 Use large request rows 会显示更多的信息
+- 接口copy as curl
+
+- 点击接口 右键Replay XHR 会重新请求接口
+- 勾选disabled cache 会模拟用户首次请求页面的
+
+
+
+
+
+
+
 #### source相关
  - source--左上角 切换到snippets 在右侧写代码, 然后输入代码, ---点击右下角运行代码
  - Select Add conditional breakpoint... 选择条件断点
  - Select Add logpoint... 选择日志断点
+ 
 
 ```shell
 open -a "Google Chrome" --args --auto-open-devtools-for-tabs

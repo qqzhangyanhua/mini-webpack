@@ -1,0 +1,46 @@
+.editor{
+    width: 100%;
+    height: 100%;
+    &-left{
+        position: absolute;
+        width: 270px;
+        background-color: aqua;
+        top: 0;
+        bottom: 0;
+        left: 0;
+    }
+    &-right{
+        width: 270px;
+        position: absolute;
+        background-color: aquamarine;
+        top: 0;
+        bottom: 0;
+        right: 0;
+    }
+    &-top{
+        position: absolute;
+        right: 280px;
+        left: 280px;
+        background-color: bisque;
+        height: 80px;
+
+    }
+    &-container{
+        padding: 80px 270px 0;
+        height: 100%;
+        &-canvas{
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            overflow: scroll;
+            &__content{
+                margin: 20px auto;
+                background-color: yellowgreen;
+                position: relative;
+            }
+        }
+    }
+    .editor-block{
+        position: absolute;
+    }
+}

@@ -46,6 +46,8 @@ console.log("%cHooray", style);
 
 - 点击接口 右键Replay XHR 会重新请求接口
 - 勾选disabled cache 会模拟用户首次请求页面的
+-  performance 设置cpu slow(X4) (https://googlechrome.github.io/devtools-samples/jank/) 数量达到一定会很卡
+- 通过录制, 点击Summary可以查看callStacks消耗时间(红色密集代表丢帧)
 
 
 

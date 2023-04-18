@@ -1,4 +1,4 @@
 packages: 
     - "libs/**"
     - "px2-loader/**"
-     - "package/**"
+    - "package/**"

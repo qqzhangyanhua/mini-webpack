@@ -5,18 +5,23 @@
   </nav>
   <router-view/> -->
   <div class="container">
-  <Editor v-model="state"/>
+  <Editor v-model="state" @change="handelChange"/>
 
   </div>
 </template>
 
 <script setup lang="ts">
-import {ref} from 'vue'
+import {provide, ref} from 'vue'
 import data from './data.json'
 import Editor from './packages/editor'
+import {registerConfig} from './utils/editor-config'
 const state = ref(data)
-
-
+  provide('config',registerConfig)  // config 传递给子组件
+const handelChange =(val:any)=>{
+  console.log('触发---------',val);
+  state.value.blocks.push(val);
+  
+}
 </script>
 <style lang="scss">
 .container{

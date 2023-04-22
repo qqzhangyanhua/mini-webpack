@@ -1,27 +1,28 @@
-import { computed, defineComponent, inject, ref } from "vue";
+import {  WritableComputedRef, computed, defineComponent, inject, ref } from "vue";
 import "./editor.scss";
 import EditorBlock from "./editor-block";
 import { useMenuDragger } from "./useMenuDragger";
 import { useBlockDragger } from "./useBlockDragger";
+import { Blocks, tsModel2 } from "./types";
 export default defineComponent({
   props: {
-    modelValue: { type: Object, required: true },
+    modelValue: { type: Object as () => tsModel2, required: true },
   },
   emits: ["update:modeValue", "change"],
   setup(props, { emit }) {
-    const data = computed({
+    const data:WritableComputedRef<tsModel2>  = computed({
       get() {
-        return props.modelValue;
+        return props.modelValue as tsModel2;
       },
       set(newValue) {
         // emit('update:modeValue',cloneDeep(newValue))
       },
-    });
+    }) 
     const currentComponent = ref(null);
     const containerStyle = computed(() => {
       return {
-        width: (data.value as any).container.width + "px",
-        height: (data.value as any).container.height + "px",
+        width: data.value.container.width + "px",
+        height: data.value.container.height + "px",
       };
     });
     const containerRef = ref(null);
@@ -37,7 +38,7 @@ export default defineComponent({
     );
     //2 实现多个元素拖拽功能
     const clearBlockFocus = (e: MouseEvent) => {
-      (data.value as any).blocks.forEach((item: any) => {
+      data.value.blocks.forEach((item: Blocks) => {
         item.focus = false;
       });
       mousedown(e);
@@ -48,9 +49,9 @@ export default defineComponent({
     };
     //计算多少个被选中,多少个未被选中
     const focusData = computed(() => {
-      let focus: any = [];
-      let unFocus: any = [];
-      (data.value as any).blocks.forEach((item: any) => {
+      let focus: Blocks[] = [];
+      let unFocus: Blocks[] = [];
+      data.value.blocks.forEach((item: Blocks) => {
         if (item.focus) {
           focus.push(item);
         } else {
@@ -97,7 +98,7 @@ export default defineComponent({
             >
               {
                 // 画布
-                (data.value as any).blocks.map((item: any) => (
+                data.value.blocks.map((item: Blocks) => (
                   <EditorBlock
                     block={item}
                     onClearBlockFocus={clearBlockFocus}

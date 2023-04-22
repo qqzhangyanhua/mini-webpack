@@ -11,11 +11,12 @@
 </template>
 
 <script setup lang="ts">
-import {provide, ref} from 'vue'
+import {Ref, provide, ref} from 'vue'
 import data from './data.json'
 import Editor from './packages/editor'
 import {registerConfig} from './utils/editor-config'
-const state = ref(data)
+import { tsModel2 } from './packages/types'
+const state:Ref<tsModel2> = ref(data)
   provide('config',registerConfig)  // config 传递给子组件
 const handelChange =(val:any)=>{
   console.log('触发---------',val);

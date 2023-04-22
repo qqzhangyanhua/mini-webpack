@@ -47,6 +47,11 @@ export default defineComponent({
     const containerMousedown = (e: MouseEvent) => {
       clearBlockFocus(e);
     };
+    const selectIndex = ref(-1);
+    //获取最后一个被选中的元素
+    const lastSelectBlock = computed(() => {
+      return focusData.value.focus[focusData.value.focus.length - 1];
+    });
     //计算多少个被选中,多少个未被选中
     const focusData = computed(() => {
       let focus: Blocks[] = [];
@@ -64,9 +69,10 @@ export default defineComponent({
       };
     });
     //实现组件的拖拽
-    const { mousedown } = useBlockDragger(focusData);
-    const blockMousedown = (e: MouseEvent) => {
+    const { mousedown } = useBlockDragger(focusData,lastSelectBlock);
+    const blockMousedown = (e: MouseEvent,index:number) => {
       mousedown(e);
+      selectIndex.value = index;
     };
     const config: any = inject("config");
     return () => (
@@ -98,9 +104,11 @@ export default defineComponent({
             >
               {
                 // 画布
-                data.value.blocks.map((item: Blocks) => (
+                data.value.blocks.map((item: Blocks,index:number) => (
                   <EditorBlock
                     block={item}
+                    index={index}
+                    focusData={focusData.value}
                     onClearBlockFocus={clearBlockFocus}
                     onBlockMousedown={blockMousedown}
                   ></EditorBlock>

@@ -13,6 +13,18 @@ export interface Container {
     key: string;
     focus?: boolean;
     alignCenter?: boolean;
+    width?: number;
+    height?: number;
+  }
+  export interface BlocksRequired {
+    top: number;
+    left: number;
+    zIndex: number;
+    key: string;
+    focus: boolean;
+    alignCenter: boolean;
+    width: number;
+    height: number;
   }
   
   /*tsModel2*/

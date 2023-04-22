@@ -2,7 +2,12 @@ import { Blocks } from "./types";
 import { computed, defineComponent, inject, onMounted, ref } from "vue";
 export default defineComponent({
   props: {
-    block: { type: Object as () => Blocks , required: true },
+    index: { type: Number, required: true },
+    block: { type: Object as () => Blocks, required: true },
+    focusData: {
+      type: Object as () => any,
+      required: true,
+    },
   },
   emits: ["clearBlockFocus", "blockMousedown"],
   setup(props, { emit }) {
@@ -17,6 +22,8 @@ export default defineComponent({
         props.block.top = props.block.top - offsetHeight / 2;
         props.block.alignCenter = false;
       }
+      props.block.width = offsetWidth;
+      props.block.height = offsetHeight;
     });
     const blockStyle = computed(() => {
       return {
@@ -29,18 +36,21 @@ export default defineComponent({
       e.preventDefault();
       e.stopPropagation();
       console.log("blockMousedown", e);
+      //按住了shift按键
       if (e.shiftKey) {
-        props.block.focus = !props.block.focus;
+        if (props.focusData.focus.length <= 1) {
+          props.block.focus = true;  //当前只有一个节点的十后悔按住shift不会切换focus状态
+        } else {
+          props.block.focus = !props.block.focus;
+        }
       } else {
         //获取焦点后,
         if (!props.block.focus) {
           emit("clearBlockFocus", e);
           props.block.focus = true; //要清空其他人的block-focus
-        } else {
-          props.block.focus = false;
         }
       }
-      emit("blockMousedown", e);
+      emit("blockMousedown", e,props.index);
     };
     //通过block的key获取到对应的组件
     const component = config.componentMap[props.block.key];
@@ -48,10 +58,7 @@ export default defineComponent({
     return () => (
       <div
         onMousedown={(e: MouseEvent) => blockMousedown(e)}
-        class={[
-          "editor-block",
-          props.block.focus ? "editor-block--focus" : "",
-        ]}
+        class={["editor-block", props.block.focus ? "editor-block--focus" : ""]}
         style={blockStyle.value}
         ref={blockRef}
       >

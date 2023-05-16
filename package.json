@@ -10,11 +10,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ant-design-vue": "^3.2.20",
     "glob": "^10.1.0",
     "tapable": "^2.2.1",
     "webpack": "^5.77.0"
   },
   "devDependencies": {
+    "@types/node": "^16.18.23",
     "amfe-flexible": "^2.2.1",
     "css-loader": "^6.7.3",
     "html-webpack-plugin": "^5.5.0",

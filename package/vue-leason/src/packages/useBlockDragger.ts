@@ -24,6 +24,7 @@ export function useBlockDragger(focusData: any,lastSelectBlock:Ref<Blocks>) {
 
   const mousedown = (e: MouseEvent) => {
     console.log("mousedown========",lastSelectBlock.value);
+    if(!lastSelectBlock.value)return
     const {width:BWidth, height:BHeight } = lastSelectBlock.value as BlocksRequired;
     //获取到当前的坐标绑定拖拽
     dragState = {

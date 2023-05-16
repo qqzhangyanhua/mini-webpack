@@ -1,4 +1,10 @@
-import {  WritableComputedRef, computed, defineComponent, inject, ref } from "vue";
+import {
+  WritableComputedRef,
+  computed,
+  defineComponent,
+  inject,
+  ref,
+} from "vue";
 import "./editor.scss";
 import EditorBlock from "./editor-block";
 import { useMenuDragger } from "./useMenuDragger";
@@ -10,14 +16,14 @@ export default defineComponent({
   },
   emits: ["update:modeValue", "change"],
   setup(props, { emit }) {
-    const data:WritableComputedRef<tsModel2>  = computed({
+    const data: WritableComputedRef<tsModel2> = computed({
       get() {
         return props.modelValue as tsModel2;
       },
       set(newValue) {
         // emit('update:modeValue',cloneDeep(newValue))
       },
-    }) 
+    });
     const currentComponent = ref(null);
     const containerStyle = computed(() => {
       return {
@@ -69,8 +75,8 @@ export default defineComponent({
       };
     });
     //实现组件的拖拽
-    const { mousedown } = useBlockDragger(focusData,lastSelectBlock);
-    const blockMousedown = (e: MouseEvent,index:number) => {
+    const { mousedown } = useBlockDragger(focusData, lastSelectBlock);
+    const blockMousedown = (e: MouseEvent, index: number) => {
       mousedown(e);
       selectIndex.value = index;
     };
@@ -104,7 +110,7 @@ export default defineComponent({
             >
               {
                 // 画布
-                data.value.blocks.map((item: Blocks,index:number) => (
+                data.value.blocks.map((item: Blocks, index: number) => (
                   <EditorBlock
                     block={item}
                     index={index}

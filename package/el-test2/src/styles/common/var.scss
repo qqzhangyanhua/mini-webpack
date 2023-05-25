@@ -1,0 +1,17 @@
+@use 'sass:math';
+@use 'sass:map';
+
+@use '../mixins/function.scss' as *;
+$main-color: #CBB486;
+$main-bg-color:#FAF7F3;
+/* 添加这段样式后，Primary Button 会变成红色 */
+:root:root {
+
+  --van-blue: #CBB486;
+  --van-toast-background:$main-color;
+}
+
+
+
+
+

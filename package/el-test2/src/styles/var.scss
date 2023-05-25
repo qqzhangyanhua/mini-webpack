@@ -1,0 +1,63 @@
+$--primary-color-100: #CBB486; // 品牌常规色
+$--primary-color-80: rgba(203, 180, 134, 0.8); // hover
+$--primary-color-50: rgba(203, 180, 134, 0.5); // 
+$--primary-color-30: rgba(203, 180, 134, 0.3); // disable
+$--primary-color-10: rgba(203, 180, 134, 0.1); // 背景填充色
+$--primary-color-active: #B8926B; // active
+$--primary-linearColor: linear-gradient(135deg, #E4C995 0%, #B9916A 100%); // 氛围btn、底部通栏btn
+$--primary-linearColor-50: linear-gradient(135deg, rgba(228, 201, 149, 0.5) 0%, rgba(185, 145, 106, 0.5) 100%); // 
+$--func-color-blue-100: #165DFF; // 蓝色常规色
+$--func-color-blue-50: rgba(22, 93, 255, 0.5); // 
+$--func-color-blue-30: rgba(22, 93, 255, 0.3); // 
+$--func-color-blue-10: rgba(22, 93, 255, 0.1); // 浅色填充标签的背景色、通告栏背景色
+$--func-color-blue-5: rgba(22, 93, 255, 0.05); // 填充+描边标签的背景色
+$--func-color-blue-dark: #0E42D2; // hover、active
+$--func-color-green-100: #09BD65; // 绿色常规色
+$--func-color-green-50: rgba(9, 189, 101, 0.5); // 标签描边
+$--func-color-green-30: rgba(9, 189, 101, 0.3); // 
+$--func-color-green-10: rgba(9, 189, 101, 0.1); // 浅色填充标签的背景色、通告栏背景色
+$--func-color-green-5: rgba(9, 189, 101, 0.05); // 填充+描边标签的背景色
+$--func-color-green-dark: #009653; // hover、active
+$--func-color-red-100: #FF3B30; // 红色常规色
+$--func-color-red-50: rgba(255, 59, 48, 0.5); // 标签描边
+$--func-color-red-30: rgba(255, 59, 48, 0.3); // 
+$--func-color-red-10: rgba(255, 59, 48, 0.1); // 浅色填充标签的背景色、通告栏背景色
+$--func-color-red-5: rgba(255, 59, 48, 0.05); // 填充+描边标签的背景色
+$--func-color-red-dark: #D9211E; // hover、active
+$--func-color-orange-100: #FC7A43; // 橙色常规色
+$--func-color-orange-50: rgba(252, 122, 67, 0.5); // 标签描边
+$--func-color-orange-30: rgba(252, 122, 67, 0.3); // 
+$--func-color-orange-10: rgba(252, 122, 67, 0.1); // 浅色填充标签的背景色、通告栏背景色
+$--func-color-orange-5: rgba(252, 122, 67, 0.05); // 填充+描边标签的背景色
+$--func-color-orange-dark: #D65C2F; // hover、active
+$--func-color-yellow-100: #F5A623; // 黄色常规色
+$--func-color-yellow-50: rgba(253, 171, 77, 0.5); // 标签描边
+$--func-color-yellow-30: rgba(253, 171, 77, 0.3); // 
+$--func-color-yellow-10: rgba(253, 171, 77, 0.1); // 浅色填充标签的背景色、通告栏背景色
+$--func-color-yellow-5: rgba(253, 171, 77, 0.05); // 填充+描边标签的背景色
+$--func-color-yellow-dark: #CF8013; // hover、active
+$--font-color-black: #000000; // 少数极重要的标题文本
+$--font-color-title: rgba(0, 0, 0, 0.8); // 
+$--font-color-text: rgba(0, 0, 0, 0.6); // 
+$--font-color-desc: rgba(0, 0, 0, 0.4); // 
+$--font-color-supply: rgba(0, 0, 0, 0.2); // 
+$--font-color-white: #FFFFFF; // 
+$--font-color-icon: #BCBEC0; // 
+$--font-color-link: #BD984C; // 链接文字默认状态
+$--font-color-link-active: #B8926B; // 链接文字的hover和active
+$--border-color-line: #E5E5E5; // 下划线、分割线
+$--border-color-border: #E5E5E5; // 按钮边框、表格边框等
+$--bg-color-3: #F2F3F5; // 分隔栏；小面积填充背景；菜单、表格选中；表头bg；
+$--bg-color-2: #F7F8FA; // 区域背景、输入框等
+$--bg-color-1: #FFFFFF; // 白色背景
+$--bg-color-light: #fff; // 背景色，一般为白色
+$--font-weight: 400; // 字重
+$--font-family: PingFang SC, system-ui; // 字体
+$--border-color-light: #e5e5e5; // 分割线，置灰，次要按钮border
+$--text-color: #000000; // 系统字体颜色
+$--danger-color: #ff3b30; // 警示颜色
+$--font-size-lg: 20px; // lg字号，md，sm,xs依次递减2px
+$--font-size-md: calc(20px - 2px); // undefined
+$--font-size-sm: calc(20px - 2px - 2px); // undefined
+$--font-size-xs: calc(20px - 2px - 2px - 2px); // undefined
+$--radius: 4px; // 圆角

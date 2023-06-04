@@ -1,14 +1,25 @@
 // electron-main/index.ts
-import { app, BrowserWindow, ipcMain } from "electron";
+import { app, BrowserWindow, ipcMain,Menu } from "electron";
 import path from "path";
 
+
+//创建窗口
 const createWindow = () => {
+
   const win = new BrowserWindow({
     webPreferences: {
       contextIsolation: false,
       nodeIntegration: true,
-      preload: path.join(__dirname, "../electron-preload/index.js"),
+      // preload: path.join(__dirname, "../electron-preload/index.js"),
     },
+    x:100,
+    y:100,
+    minHeight: 300,
+    minWidth: 300,
+    autoHideMenuBar: false,
+    // frame: false,
+    // width: 600,
+    // height: 400,
   });
 
   if (app.isPackaged) {
@@ -25,6 +36,21 @@ setTimeout(() => {
 
 };
 
+const setMenu = () => {
+  let menuTemp =[{
+    label: '文件123',
+    submenu:[{
+      label: '新建',
+    }]
+  },{
+    label: '编辑',
+  }]
+  //生成一个菜单
+  const menu123 = Menu.buildFromTemplate(menuTemp)
+  //设置菜单
+  Menu.setApplicationMenu(menu123)
+}
+
 ipcMain.on("message", (_, num) => {
   console.log(num, "来了");
 });
@@ -37,7 +63,10 @@ app.whenReady().then(() => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
 });
-
+app.on('ready',()=>{
+    setMenu();
+})
+//所有窗口都关闭了
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") {
     app.quit();

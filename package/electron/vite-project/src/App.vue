@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import {ipcRenderer} from 'electron';
+import { ipcRenderer } from "electron";
 const send = () => {
-  ipcRenderer.send('message', 'hello from vite electron');
-}
-ipcRenderer.on('load', (event, arg) => {
-  console.log('00000000000000',arg);
-})
+  ipcRenderer.send("message", "hello from vite electron");
+};
+ipcRenderer.on("load", (event, arg) => {
+  console.log("00000000000000", arg);
+});
 </script>
 
 <template>

@@ -2,7 +2,10 @@
 
 /* 改变主题色变量 */
 $--color-primary: #cbb486;
-
+:root {
+    --color-primary: #f56c6c;
+    --primary-color: #cbb486; /* 定义主题色变量 */
+  }
 /* 改变 icon 字体路径变量，必需 */
 $--font-path: "~element-ui/lib/theme-chalk/fonts";
 :root {

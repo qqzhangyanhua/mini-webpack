@@ -8,15 +8,16 @@ import {
   Delete,
   Request,
   Query,
+  Res,
+  Session,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-
+import * as svgCaptcha from 'svg-captcha';
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
-
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
     console.log('createUserDto==', createUserDto);
@@ -26,7 +27,40 @@ export class UserController {
       value: createUserDto,
     }; //this.userService.create(createUserDto);
   }
-
+  @Get('code')
+  createCode(@Request() req, @Res() res, @Session() session) {
+    const captcha = svgCaptcha.create({
+      size: 4,
+      noise: 2,
+      width: 150,
+      height: 50,
+      fontSize: 50,
+      color: true,
+    });
+    session.code = captcha.text;
+    res.type('image/svg+xml');
+    res.send(captcha.data);
+    return {
+      code: 200,
+      captcha,
+    };
+  }
+  @Post('create')
+  createUser(@Body() body, @Session() session) {
+    console.log('body==', body);
+    console.log('session==', session);
+    if (session.code !== body?.code) {
+      return {
+        code: 400,
+        msg: '验证码错误',
+      };
+    }
+    return {
+      code: 200,
+      msg: 'success',
+      value: body,
+    };
+  }
   @Get()
   findAll(@Query() req) {
     console.log('req==', req);

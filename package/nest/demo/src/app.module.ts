@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { DemoController } from './demo/demo.controller';
 import { DemoModule } from './demo/demo.module';
 import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { NameUserMOdule } from './modules/user/user.module';
+import { GroupsModule } from './groups/groups.module';
 @Module({
   imports: [
     DemoModule,
@@ -23,8 +23,9 @@ import { NameUserMOdule } from './modules/user/user.module';
       autoLoadEntities: true,
     }),
     NameUserMOdule,
+    GroupsModule,
   ],
-  controllers: [AppController, DemoController],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}

@@ -6,6 +6,8 @@ import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { NameUserMOdule } from './modules/user/user.module';
 import { GroupsModule } from './groups/groups.module';
+import { MulterModule } from './multer/multer.module';
+import { UploadModule } from './upload/upload.module';
 @Module({
   imports: [
     DemoModule,
@@ -24,6 +26,8 @@ import { GroupsModule } from './groups/groups.module';
     }),
     NameUserMOdule,
     GroupsModule,
+    MulterModule,
+    UploadModule,
   ],
   controllers: [AppController],
   providers: [AppService],

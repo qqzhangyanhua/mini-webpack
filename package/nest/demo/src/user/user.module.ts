@@ -1,9 +1,14 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { UserService } from './user.service';
 import { UserController } from './user.controller';
-
+import { LoggerMiddleware } from 'src/middleware';
 @Module({
   controllers: [UserController],
   providers: [UserService],
 })
-export class UserModule {}
+//中间件可以在此添加
+export class UserModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(LoggerMiddleware).forRoutes(UserController);
+  }
+}

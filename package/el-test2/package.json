@@ -7,7 +7,6 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "@tongban/components": "^1.0.1",
     "axios": "^1.4.0",
     "core-js": "^3.8.3",
     "vue": "^2.6.14",

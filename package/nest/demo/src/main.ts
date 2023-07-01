@@ -5,6 +5,8 @@ import { Request, Response, NextFunction } from 'express';
 import * as cors from 'cors';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
+import {Response as ValResponse} from './common/response'
+import {HttpFilter} from './common/filter'
 function middleware(req: Request, res: Response, next: NextFunction) {
   console.log('全局中间件==', req.originalUrl);
   next();
@@ -13,6 +15,8 @@ function middleware(req: Request, res: Response, next: NextFunction) {
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   app.use(cors()); //解决跨域的问题
+  app.useGlobalInterceptors(new ValResponse()); //全局拦截器
+  app.useGlobalFilters(new HttpFilter()); //全局过滤器
   app.use(middleware);
   app.use(
     session({

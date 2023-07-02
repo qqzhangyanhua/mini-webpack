@@ -10,11 +10,13 @@ import {
   Query,
   Res,
   Session,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import * as svgCaptcha from 'svg-captcha';
+import { type } from 'os';
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
@@ -74,7 +76,8 @@ export class UserController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id',ParseIntPipe) id: string) {  //ParseIntPipe 用于转换参数类型
+    console.log('id==========', typeof id);
     return this.userService.findOne(+id);
   }
 

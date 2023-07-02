@@ -7,6 +7,7 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
 import {Response as ValResponse} from './common/response'
 import {HttpFilter} from './common/filter'
+import { ValidationPipe} from '@nestjs/common'
 function middleware(req: Request, res: Response, next: NextFunction) {
   console.log('全局中间件==', req.originalUrl);
   next();
@@ -18,6 +19,7 @@ async function bootstrap() {
   app.useGlobalInterceptors(new ValResponse()); //全局拦截器
   app.useGlobalFilters(new HttpFilter()); //全局过滤器
   app.use(middleware);
+  app.useGlobalPipes(new ValidationPipe()); //全局管道
   app.use(
     session({
       secret: '111',

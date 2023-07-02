@@ -8,6 +8,7 @@ import { NameUserMOdule } from './modules/user/user.module';
 import { GroupsModule } from './groups/groups.module';
 import { MulterModule } from './multer/multer.module';
 import { UploadModule } from './upload/upload.module';
+import { LoginModule } from './login/login.module';
 @Module({
   imports: [
     DemoModule,
@@ -28,6 +29,7 @@ import { UploadModule } from './upload/upload.module';
     GroupsModule,
     MulterModule,
     UploadModule,
+    LoginModule,
   ],
   controllers: [AppController],
   providers: [AppService],

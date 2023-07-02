@@ -13,7 +13,7 @@ export class MysqlController {
   }
 
   @Get()
-  findAll(@Query() query:{keyWord:string}) {
+  findAll(@Query() query:{keyWord:string,pageSize:number,page:number}) {
     return this.mysqlService.findAll(query);
   }
 

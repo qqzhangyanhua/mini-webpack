@@ -16,11 +16,33 @@ export class MysqlService {
     return this.mysql.save(data);
   }
 
-  findAll(query: { keyWord: string }) {
+  async findAll(query: { keyWord: string; pageSize: number; page: number }) {
+    //z分页
+    const condition = {
+      skip: (query.page - 1) * query.pageSize,
+      take: query.pageSize,
+    };
     if (!query.keyWord) {
-      return this.mysql.find();
+      const data = await this.mysql.find({ ...condition,order:{id:'DESC'}});
+      console.log('data======', data.length);
+      const total = await this.mysql.count();
+      return {
+        data,
+        total,
+      };
     }
-    return this.mysql.find({ where: { name: Like(`%${query.keyWord}%`) } });
+    const data = this.mysql.find({
+      where: { name: Like(`%${query.keyWord}%`) },
+      ...condition,
+      order:{id:'DESC'}
+    });
+    const total = await this.mysql.count({
+      where: { name: Like(`%${query.keyWord}%`) },
+    });
+    return {
+      data,
+      total,
+    };
   }
 
   findOne(id: number) {

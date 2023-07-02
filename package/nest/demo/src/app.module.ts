@@ -9,6 +9,9 @@ import { GroupsModule } from './groups/groups.module';
 import { MulterModule } from './multer/multer.module';
 import { UploadModule } from './upload/upload.module';
 import { LoginModule } from './login/login.module';
+import { SpiderModule } from './spider/spider.module';
+import { GuardModule } from './guard/guard.module';
+import { MysqlModule } from './mysql/mysql.module';
 @Module({
   imports: [
     DemoModule,
@@ -30,6 +33,9 @@ import { LoginModule } from './login/login.module';
     MulterModule,
     UploadModule,
     LoginModule,
+    SpiderModule,
+    GuardModule,
+    MysqlModule,
   ],
   controllers: [AppController],
   providers: [AppService],

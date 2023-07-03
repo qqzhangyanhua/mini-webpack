@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Query,
+} from '@nestjs/common';
 import { MysqlService } from './mysql.service';
 import { CreateMysqlDto } from './dto/create-mysql.dto';
 import { UpdateMysqlDto } from './dto/update-mysql.dto';
@@ -6,6 +15,10 @@ import { UpdateMysqlDto } from './dto/update-mysql.dto';
 @Controller('mysql')
 export class MysqlController {
   constructor(private readonly mysqlService: MysqlService) {}
+  @Post('/add/tags')
+  addTags(@Body() body: { tags: string[]; userId: number }) {
+    return this.mysqlService.addTags(body);
+  }
 
   @Post()
   create(@Body() createMysqlDto: CreateMysqlDto) {
@@ -13,7 +26,7 @@ export class MysqlController {
   }
 
   @Get()
-  findAll(@Query() query:{keyWord:string,pageSize:number,page:number}) {
+  findAll(@Query() query: { keyWord: string; pageSize: number; page: number }) {
     return this.mysqlService.findAll(query);
   }
 

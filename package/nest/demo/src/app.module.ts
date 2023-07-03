@@ -12,6 +12,7 @@ import { LoginModule } from './login/login.module';
 import { SpiderModule } from './spider/spider.module';
 import { GuardModule } from './guard/guard.module';
 import { MysqlModule } from './mysql/mysql.module';
+import { MangerModule } from './manger/manger.module';
 @Module({
   imports: [
     DemoModule,
@@ -36,6 +37,7 @@ import { MysqlModule } from './mysql/mysql.module';
     SpiderModule,
     GuardModule,
     MysqlModule,
+    MangerModule,
   ],
   controllers: [AppController],
   providers: [AppService],

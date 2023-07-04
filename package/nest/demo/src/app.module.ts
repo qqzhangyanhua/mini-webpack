@@ -13,6 +13,7 @@ import { SpiderModule } from './spider/spider.module';
 import { GuardModule } from './guard/guard.module';
 import { MysqlModule } from './mysql/mysql.module';
 import { MangerModule } from './manger/manger.module';
+import { GraphqlModule } from './graphql/graphql.module';
 @Module({
   imports: [
     DemoModule,
@@ -38,6 +39,7 @@ import { MangerModule } from './manger/manger.module';
     GuardModule,
     MysqlModule,
     MangerModule,
+    GraphqlModule,
   ],
   controllers: [AppController],
   providers: [AppService],

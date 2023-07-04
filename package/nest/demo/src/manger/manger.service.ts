@@ -4,7 +4,6 @@ import { UpdateMangerDto } from './dto/update-manger.dto';
 import { Manger } from './entities/manger.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { log } from 'console';
 @Injectable()
 export class MangerService {
   constructor(

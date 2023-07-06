@@ -9,10 +9,10 @@ export class HttpFilter implements ExceptionFilter {
     const request = ctx.getRequest<Request>();
     const status = exception.status;
     response.status(status).json({
-      status,
+      code: status,
       timestamp: new Date().toISOString(),
       path: request.url,
-      message: exception,
+      message: exception?.response?.message || exception?.message || '未知错误',
       success: false,
     });
   }

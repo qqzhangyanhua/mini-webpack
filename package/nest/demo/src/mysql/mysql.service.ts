@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, Injectable } from '@nestjs/common';
 import { CreateMysqlDto } from './dto/create-mysql.dto';
 import { UpdateMysqlDto } from './dto/update-mysql.dto';
 import { Mysql } from './entities/mysql.entity';
@@ -13,9 +13,13 @@ export class MysqlService {
   ) {}
   create(createMysqlDto: CreateMysqlDto) {
     const data = new Mysql();
+    if (!createMysqlDto.name || !createMysqlDto.desc) {
+      throw new HttpException('参数缺失', 500);
+    }
     data.name = createMysqlDto.name;
     data.desc = createMysqlDto.desc;
-    return this.mysql.save(data);
+    this.mysql.save(data);
+    return '新增成功!';
   }
 
   async findAll(query: { keyWord: string; pageSize: number; page: number }) {

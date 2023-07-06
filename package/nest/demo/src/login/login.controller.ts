@@ -8,7 +8,7 @@ import {
   Delete,
 } from '@nestjs/common';
 import { LoginService } from './login.service';
-import { CreateLoginDto } from './dto/create-login.dto';
+import { CreateLoginDto, SendMsgDto } from './dto/create-login.dto';
 import { UpdateLoginDto } from './dto/update-login.dto';
 // import {LoginPipe} from './login.pipe'
 @Controller('login')
@@ -19,7 +19,10 @@ export class LoginController {
   create(@Body() createLoginDto: CreateLoginDto) {
     return this.loginService.create(createLoginDto);
   }
-
+  @Post('sendMsg')
+  sendMsg(@Body() sendMsgDto: SendMsgDto) {
+    return this.loginService.sendMsg(sendMsgDto);
+  }
   @Get()
   findAll() {
     return this.loginService.findAll();

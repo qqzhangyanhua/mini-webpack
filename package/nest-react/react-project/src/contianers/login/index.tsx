@@ -45,6 +45,7 @@ const Login = () => {
               captchaProps={{
                 size: "large",
               }}
+              phoneName={"mobile"}
               placeholder={"请输入验证码"}
               captchaTextRender={(timing, count) => {
                 if (timing) {
@@ -59,7 +60,9 @@ const Login = () => {
                   message: "请输入验证码！",
                 },
               ]}
-              onGetCaptcha={async () => {
+              onGetCaptcha={async (val) => {
+                console.log('val', val);
+                
                 message.success("获取验证码成功！验证码为：1234");
               }}
             />

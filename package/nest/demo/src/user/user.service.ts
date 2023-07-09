@@ -2,6 +2,7 @@ import {
   ConflictException,
   Injectable,
   Request,
+  Session,
   UnauthorizedException,
 } from '@nestjs/common';
 import { CreateUserDto, LoginUserDto } from './dto/create-user.dto';
@@ -47,6 +48,14 @@ export class UserService {
       throw new UnauthorizedException('密码错误');
     }
     return '登录成功!';
+  }
+  async verifyCode(session, body) {
+    console.log('session==', session.code);
+
+    if (session.code.toLocaleLowerCase() !== body?.code.toLocaleLowerCase()) {
+      return false;
+    }
+    return true;
   }
   findAll(@Request() req: any) {
     console.log('req', req);

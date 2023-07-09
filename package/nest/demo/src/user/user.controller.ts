@@ -11,6 +11,7 @@ import {
   Res,
   Session,
   ParseIntPipe,
+  UnauthorizedException,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto, LoginUserDto } from './dto/create-user.dto';
@@ -21,12 +22,15 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
-    console.log('createUserDto==444444444444444', createUserDto);
     return this.userService.create(createUserDto);
   }
   @Post('login')
-  login(@Body() body: LoginUserDto) {
-    console.log('body==', body);
+  async login(@Body() body: LoginUserDto, @Session() session) {
+    const data = await this.userService.verifyCode(session, body);
+    console.log('data==', data);
+    if (!data) {
+      throw new UnauthorizedException('验证码错误');
+    }
     return this.userService.loginUser(body);
   }
   @Get('code')
@@ -50,12 +54,9 @@ export class UserController {
   @Post('createCode')
   createUserCode(@Body() body, @Session() session) {
     console.log('body==', body);
-    console.log('session==', session);
+    console.log('session==', session.code);
     if (session.code !== body?.code) {
-      return {
-        code: 400,
-        msg: '验证码错误',
-      };
+      return '验证码错误';
     }
     return {
       code: 200,

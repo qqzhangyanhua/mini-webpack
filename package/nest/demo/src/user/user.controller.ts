@@ -13,21 +13,21 @@ import {
   ParseIntPipe,
 } from '@nestjs/common';
 import { UserService } from './user.service';
-import { CreateUserDto } from './dto/create-user.dto';
+import { CreateUserDto, LoginUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import * as svgCaptcha from 'svg-captcha';
-import { type } from 'os';
-@Controller('user')
+@Controller('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
-    console.log('createUserDto==', createUserDto);
-    return {
-      code: 200,
-      msg: 'success',
-      value: createUserDto,
-    }; //this.userService.create(createUserDto);
+    console.log('createUserDto==444444444444444', createUserDto);
+    return this.userService.create(createUserDto);
+  }
+  @Post('login')
+  login(@Body() body: LoginUserDto) {
+    console.log('body==', body);
+    return this.userService.loginUser(body);
   }
   @Get('code')
   createCode(@Request() req, @Res() res, @Session() session) {
@@ -47,8 +47,8 @@ export class UserController {
       captcha,
     };
   }
-  @Post('create')
-  createUser(@Body() body, @Session() session) {
+  @Post('createCode')
+  createUserCode(@Body() body, @Session() session) {
     console.log('body==', body);
     console.log('session==', session);
     if (session.code !== body?.code) {
@@ -76,7 +76,8 @@ export class UserController {
   }
 
   @Get(':id')
-  findOne(@Param('id',ParseIntPipe) id: string) {  //ParseIntPipe 用于转换参数类型
+  findOne(@Param('id', ParseIntPipe) id: string) {
+    //ParseIntPipe 用于转换参数类型
     console.log('id==========', typeof id);
     return this.userService.findOne(+id);
   }

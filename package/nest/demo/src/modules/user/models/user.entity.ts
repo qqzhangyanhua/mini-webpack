@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 import { IsNotEmpty } from 'class-validator';
-@Entity('user')
+@Entity('userOther')
 export class NameUser {
   @PrimaryGeneratedColumn('uuid')
   id: string;

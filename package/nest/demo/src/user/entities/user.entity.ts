@@ -7,27 +7,13 @@ export class User {
   @Column({
     comment: '姓名',
     default: '',
-  })
-  @IsNotEmpty({ message: '姓名不能为空' })
-  name: string;
-  @Column({
-    comment: '描述信息',
-    default: '',
-  })
-  desc: string;
-  @Column({
-    comment: '手机号',
     nullable: true,
   })
-  tel: string;
+  @IsNotEmpty({ message: '姓名不能为空' })
+  userName: string;
   @Column({
     comment: '密码',
     nullable: true,
   })
   password: string;
-  @Column({
-    comment: '账户信息',
-    nullable: true,
-  })
-  account: string;
 }

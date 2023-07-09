@@ -1,14 +1,20 @@
-import { ArgumentMetadata, HttpException, HttpStatus, Injectable, PipeTransform } from '@nestjs/common';
-import { plainToInstance} from "class-transformer";
-import { validate } from 'class-validator'
+import {
+  ArgumentMetadata,
+  HttpException,
+  HttpStatus,
+  Injectable,
+  PipeTransform,
+} from '@nestjs/common';
+import { plainToInstance } from 'class-transformer';
+import { validate } from 'class-validator';
 @Injectable()
 export class LoginPipe implements PipeTransform {
   async transform(value: any, metadata: ArgumentMetadata) {
-    const DTO =plainToInstance(metadata.metatype,value);
+    const DTO = plainToInstance(metadata.metatype, value);
     const errors = await validate(DTO);
-    console.log('LoginPipe errors',errors);
-    if(errors.length){
-      throw new HttpException(errors[0].constraints,HttpStatus.BAD_GATEWAY)
+    console.log('LoginPipe errors', errors);
+    if (errors.length) {
+      throw new HttpException(errors[0].constraints, HttpStatus.BAD_GATEWAY);
     }
     return value;
   }

@@ -5,11 +5,11 @@ import { Request, Response, NextFunction } from 'express';
 import * as cors from 'cors';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
-import {Response as ValResponse} from './common/response'
-import {HttpFilter} from './common/filter'
-import { ValidationPipe} from '@nestjs/common'
-import { RoleGuard} from './guard/role/role.guard'
-import { SwaggerModule, DocumentBuilder} from '@nestjs/swagger'
+import { Response as ValResponse } from './common/response';
+import { HttpFilter } from './common/filter';
+import { ValidationPipe } from '@nestjs/common';
+import { RoleGuard } from './guard/role/role.guard';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 function middleware(req: Request, res: Response, next: NextFunction) {
   console.log('全局中间件==', req.originalUrl);
   next();
@@ -34,12 +34,17 @@ async function bootstrap() {
       },
     }),
   );
-  const options = new DocumentBuilder().setTitle('nest').setDescription('nest接口文档').setVersion('1.0').addTag('nest').build();
-  const document = SwaggerModule.createDocument(app,options);
-  SwaggerModule.setup('api-docs',app,document);
-app.useStaticAssets(join(__dirname,'images'),{
-  prefix:'/images'
-})
+  const options = new DocumentBuilder()
+    .setTitle('nest')
+    .setDescription('nest接口文档')
+    .setVersion('1.0')
+    .addTag('nest')
+    .build();
+  const document = SwaggerModule.createDocument(app, options);
+  SwaggerModule.setup('api-docs', app, document);
+  app.useStaticAssets(join(__dirname, 'images'), {
+    prefix: '/images',
+  });
   await app.listen(3000);
 }
 bootstrap();

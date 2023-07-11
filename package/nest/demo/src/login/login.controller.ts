@@ -10,6 +10,7 @@ import {
 import { LoginService } from './login.service';
 import { CreateLoginDto, SendMsgDto } from './dto/create-login.dto';
 import { UpdateLoginDto } from './dto/update-login.dto';
+// import { JwtService } from '@nestjs/jwt';
 // import {LoginPipe} from './login.pipe'
 @Controller('login')
 export class LoginController {

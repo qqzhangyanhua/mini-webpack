@@ -11,11 +11,13 @@ import { DeepPartial, Repository } from 'typeorm';
 import { User } from './entities/user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcryptjs';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class UserService {
   constructor(
     @InjectRepository(User) private readonly user: Repository<User>,
+    private jwtService: JwtService,
   ) {}
   async findUserByUsername(userName: string): Promise<User | undefined> {
     const from = await this.user.findOne({
@@ -47,12 +49,15 @@ export class UserService {
     if (!isPasswordValid) {
       throw new UnauthorizedException('密码错误');
     }
-    return '登录成功!';
+    const token = this.jwtService.sign({ id: from.id });
+    return token;
   }
   async verifyCode(session, body) {
-    console.log('session==', session.code);
-
-    if (session.code.toLocaleLowerCase() !== body?.code.toLocaleLowerCase()) {
+    console.log('session===========', session.code, body);
+    if (!session.code) {
+      throw new UnauthorizedException('验证码错误');
+    }
+    if (session?.code.toLocaleLowerCase() !== body?.code.toLocaleLowerCase()) {
       return false;
     }
     return true;

@@ -13,6 +13,7 @@ export const ROUTE_KEY = {
   HOME: "home",
   LOGIN: "login",
   PAGE_NOT_FOUND: "page-not-found",
+  ORG:'org',
 };
 export const ROUTE_CONFIG:Record<string,RouteConfig> = {
   [ROUTE_KEY.HOME]: {

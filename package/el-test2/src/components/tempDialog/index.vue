@@ -22,10 +22,8 @@
 </template>
 
 <script>
-import { TButton } from "@tongban/components";
 export default {
   components:{
-    TButton
   },
   props: {
     title: {

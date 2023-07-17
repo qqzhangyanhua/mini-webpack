@@ -1,28 +1,58 @@
 <template>
   <div id="app">
-11111111
-  <iframe src="http://localhost:8080/other-person-add" id="iframe"></iframe>
-    <!-- <router-view/> -->
+    1111111111111
+    <AInput :form="form" ref="aInput"></AInput>
+    {{ form.name }}
+    {{ form.age }}
+    <!-- <AButton :form='form'  ref='aButton' @changeName='changeName'></AButton> -->
+    <button @click="handelClick">按扭</button>
   </div>
 </template>
 <script>
-const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary-color').trim();
-console.log('primaryColor11111111111111111111',primaryColor);
-export default{
-  mounted(){
-  const iframe = document.getElementById('iframe');
-iframe.contentWindow.postMessage({ primaryColor }, '*');
+import AButton from "./components/aButton/index.vue";
+import AInput from "./components/aInput/index.vue";
+export default {
+  components: {
+    AButton,
+    AInput,
+  },
+  data() {
+    return {
+      form: {
+        name: "张三",
+        age: 4,
+      },
+    };
+  },
+  created() {
+    this.timeOut();
+  },
+  computed: {},
+  methods: {
+    clearTime(timer){
+      clearInterval(timer)
+    },
+    timeOut() {
+      let timer = setInterval(() => {
+        if (this.form.age === 0) {
+          this.clearTime(timer)
+          return;
+        }
+        this.form.age--;
+      }, 1000);
+    },
+    changeName(val) {
+      this.form.name = val;
+    },
+    handelClick() {
+      console.log("this.$refs.aButton", this.$refs.aButton);
+      const aButton = this.$refs.aButton;
+      aButton.changeName("麦子");
 
-console.log('iframe99999999999999999',iframe);
-    }
-}
-
+      this.form.name = "李四";
+      this.form.age = new Date().getTime();
+    },
+  },
+};
 </script>
-<style scoped>
-#iframe{
-  width: 1000px;
-  height: 800px;
-}
-</style>
-
-
+<style lang="scss" scoped></style>

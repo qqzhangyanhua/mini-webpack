@@ -55,12 +55,10 @@
   </div>
 </template>
 <script>
- import { TButton, } from "@tongban/components";
 
 import AddAuthPerson from "./addAuthPerson.vue";
 export default {
   components: {
-    TButton,
     AddAuthPerson,
   },
   data() {

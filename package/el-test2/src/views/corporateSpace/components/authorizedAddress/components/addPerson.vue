@@ -30,11 +30,9 @@
 <script>
 import TForm from "../../../../../components/tForm/index.vue";
 import { formDataConfig } from "./person";
-import { TButton } from "@tongban/components";
 export default {
   components: {
     TForm,
-    TButton,
   },
   props: {
     showVisible: {

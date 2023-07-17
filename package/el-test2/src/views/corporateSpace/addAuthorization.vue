@@ -30,10 +30,8 @@ import ChooseSecond from "./components/addAuthorizationComp/chooseSecond.vue";
 import ChooseThird from "./components/addAuthorizationComp/chooseThird.vue";
 import ChooseFourth from "./components/addAuthorizationComp/chooseFourth.vue";
 import ChooseFirst from "./components/addAuthorizationComp/chooseFirst.vue";
- import { TButton, } from "@tongban/components";
 export default {
   components: {
-    TButton,
     ChooseFirst,
     ChooseSecond,
     ChooseThird,

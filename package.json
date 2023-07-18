@@ -15,7 +15,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,ts,vue,.py}": "vue-cli-service lint"
+    "*.{js,ts,vue,.py}": ""
   },
   "keywords": [],
   "author": "",

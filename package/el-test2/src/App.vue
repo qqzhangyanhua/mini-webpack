@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    1111111111111
     <AInput :form="form" ref="aInput"></AInput>
     {{ form.name }}
     {{ form.age }}

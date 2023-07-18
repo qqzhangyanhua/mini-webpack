@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    #box {
+      width: 140px;
+      height: 64px;
+      border: 1px solid #000;
+      transition: transform 1s linear 0s;
+    }
+    #box:hover {
+      transform: translate(120px, 0);
+    }
+    #box1 {
+      font-family: Arial;
+      transition: font-family 1s linear;
+    }
+    #box1:hover {
+      font-family: Microsoft Yahei;
+    }
+    .g-button:hover {
+      background: #ff0089;
+    }
+    .g-button:active {
+      background: #71003c;
+    }
+    .g-circle:hover {
+      transform: translate(0, -20px);
+    }
+    .s-transition {
+      transition: background 0.8s, transform 0.5s;
+    }
+    .g-button{
+        width: 100px;
+        height: 36px;
+        border: 1px solid #000;
+        background-color: #71003c;
+    }
+    .g-circle{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 1px solid #000;
+        background-color: antiquewhite;
+        transition: transform .3s;
+    }
+
+    .text{
+        border: 1px solid #000;
+        padding: 5px 8px;
+    }
+  </style>
+  <body>
+    <div class="g-button s-transition"></div>
+    <div class="g-circle s-transition"></div>
+    <div class="s-transition"></div>
+    <div id="box">111</div>
+    <div id="box1">文字</div>
+
+    <div class="text"> hover me</div>
+  </body>
+</html>

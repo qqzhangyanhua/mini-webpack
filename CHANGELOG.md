@@ -1,6 +1,17 @@
-# Changelog
+# 更新日志 
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [2.0.0](https://github.com/qqzhangyanhua/mini-webpack/compare/v1.1.0...v2.0.0) (2023-07-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* 🧨 git cz
+
+### ✨ Features | 新功能
+
+* ✨ cz测试 ([3743091](https://github.com/qqzhangyanhua/mini-webpack/commit/3743091800f2764ed3ede970dd40883f661f26f0))
+* ✨ git cz ([38742a7](https://github.com/qqzhangyanhua/mini-webpack/commit/38742a71dac3e6ce3fe2372bd5781bcba4c46f33))
 
 ## 1.1.0 (2023-07-18)
 

@@ -1,0 +1,40 @@
+{
+  "name": "vite-project",
+  "private": true,
+  "version": "0.0.0",
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && electron-builder",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.2.3",
+    "electron": "^25.3.1",
+    "electron-builder": "^24.4.0",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.0",
+    "vite-plugin-electron": "^0.12.0",
+    "vue-tsc": "^1.8.3"
+  },
+  "build": {
+    "appId": "com.vite-electron.zxl",
+    "productName": "MyEleectronApp11",
+    "copyright": "Copyright © 2023 zxl",
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*"
+    ],
+    "directories": {
+      "output": "release/"
+    }
+  }
+
+}
